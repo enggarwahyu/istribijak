@@ -1,0 +1,541 @@
+
+
+
+
+
+
+
+
+
+/* 
+**
+**  Sections Stuff
+**
+*/
+
+
+.section {
+  overflow: hidden;
+  position: relative;
+  padding: 50px 0;
+  background-color: #fff;
+
+  &.first { padding-top: 130px; }
+
+}
+
+@include coloring($colors, section-, false) {
+  background-color: $color;
+  // color: white;
+  color: set-contrast-color($color, $grey, $white);
+
+  .btn {
+    color: set-contrast-color($color, $grey, $white);
+    border-color: set-contrast-color($color, $grey, $white);
+
+    &.inverse {
+      color: $color;
+    }
+    &.inverse:hover, &.inverse:focus {
+      background-color: $color;
+    }
+  }
+
+  .btn:hover, .btn:focus {
+    color: $color;
+    background-color: set-contrast-color($color, $grey, $white);
+    border-color: set-contrast-color($color, $grey, $white);
+  }
+  
+
+
+  @each $btn in $color-list {
+    
+    .btn-#{nth($btn, 1)} {
+      &:hover {
+        color: $color;
+      }
+    }
+
+  }
+
+
+  &.conference-footer .pe-social .pe-bg,
+  &.conference-showcase .pe-social .pe-bg { color: $color; }
+
+
+  .timeline-featured .timeline-content {
+    background-color: white;
+    color: $grey;
+
+    &:after {
+      color: set-contrast-color($color, $grey, $white);
+    }
+  }
+  
+}
+
+
+
+
+
+/* Section Background specific */
+
+
+.section-background {
+  background-size: cover;
+  background-position: center center;
+  &.pe-fixed { 
+    background-attachment: fixed; 
+    position: static;
+    z-index: 90; 
+  }
+}
+
+
+.pe-parallax { 
+  position: relative;
+  overflow: hidden; 
+  z-index: 1;
+
+  .prlx {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    will-change: transform;
+  }
+
+  &.x2 .prlx {
+    height: 200vh;
+  }
+  &.x3 .prlx {
+    height: 300vh;
+  }
+  &.x4 .prlx {
+    height: 400vh;
+  }
+}
+
+
+
+
+
+
+
+
+/* 
+**
+**  Typo Stuff
+**
+*/
+
+
+
+
+
+.h-black { font-family:'LoveloBlack-Regular'; }
+.h-book { font-family:'Montserrat-Regular'; }
+
+.text-normalcase { text-transform: none; }
+.text-uppercase { text-transform: uppercase; }
+
+.text-truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+a {
+  color:currentColor;
+  
+  &:hover, &:focus { 
+    color:currentColor; }
+
+  &:active, &:focus { 
+    outline:0 }
+}
+
+
+
+@include coloring($colors, color-, false) {
+  color: $color;
+}
+
+
+input[placeholder] { text-overflow: ellipsis; }
+::-moz-placeholder { text-overflow: ellipsis; } /* firefox 19+ */
+input:-moz-placeholder { text-overflow: ellipsis; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General */
+
+.pe-social {
+  font-size: 20px;
+}
+
+.compact {
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.widget-centered {
+  padding: 40px;
+  background-color: white;
+}
+
+/* Titles */
+
+.conference-main-title {
+  font-family:'LoveloBlack-Regular';
+  text-transform: uppercase;
+  i {
+    display: block;
+    font-size: 140px;
+    margin-bottom: 15px;  
+  }
+}
+
+h1.conference-main-title {
+  font-size: 74px;
+}
+
+h2.conference-main-title {
+  font-size: 50px;
+}
+
+.conference-main-subtitle {
+  font-family:'Montserrat-Regular';
+  text-transform: uppercase;
+  font-size: 23px;
+  letter-spacing: 1px;
+}
+
+.conference-title {
+  font-family:'Montserrat-Regular';
+  text-transform: uppercase;  
+  margin-bottom: 20px;
+  .subtitle {
+    font-size: 13px;
+    font-style: italic;
+    display: block;
+    text-transform: capitalize;
+    font-weight: normal;
+    margin-top: 5px;
+    color: #8c8c8c;
+  }
+  i {
+  display: block;
+  font-size: 40px;
+  margin-bottom: 15px;  
+  }
+}
+
+h2.conference-title {
+  font-size: 23px;  
+}
+
+h3.conference-title {
+  font-size: 19px;
+}
+
+
+/* Demo Sections */
+
+.conference-showcase {
+  padding: 0px;
+  // background-color: $gothic;
+  min-height: 853px;
+  color: white;
+  p {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+  hr {
+    // background-color: white;
+  }
+  .showcase-container {
+    padding-top: 160px;
+    padding-left: 40px;
+    width: 50%;
+  }
+  .showcase-content {
+    padding: 2px 0px 0px 12px;
+  }
+  .conference-main-title {
+    margin: 0px;
+  }
+  .conference-main-subtitle {
+    margin: 0px;
+    padding-left: 12px;
+  }
+  .pe-social .pe-bg {
+    background-color: white !important;
+    // color: $gothic;
+  }
+  .pe-social li {
+    padding: 0px 3px;
+  }
+  .pe-social {
+    margin-left: -3px;
+  }
+}
+
+
+/* Checker Styles */
+
+.featured-checker {
+  background-color: $iceberg;
+}
+
+.checker-content {
+  padding: 65px 35px 0px 35px;
+  .pe-social {
+    display: inline-block;
+    border-top: 1px solid $dark-grey;
+    padding: 18px 20px 0px 20px;
+    margin-top: 10px;
+  }
+}
+
+.checker-full {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.checker-container {
+  cursor: pointer;
+}
+
+.checker-image {
+  position: relative;
+}
+
+.active-checker {
+  background-color: $iceberg;
+  transition: background-color .3s, border-color .3s;
+}
+
+/* arrow-left */
+
+ .active-checker.arrow-left .checker-image:after {
+  content: " ";
+  position: absolute;
+  z-index: 10;
+  right: 0px;
+  top: 50%;
+  margin-top: -15px;
+  width: 0; 
+  height: 0; 
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent; 
+  border-right: 15px solid $iceberg; 
+}
+
+/* arrow-right */
+
+  .active-checker.arrow-right .checker-image:after {
+  content: " ";
+  position: absolute;
+  z-index: 10;
+  left: 0px;
+  top: 50%;
+  margin-top: -15px;
+  width: 0; 
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid $iceberg;
+}
+
+
+/* Conference Venue */
+
+.conference-bg { background-image:url(../img/auditorium.jpg); }
+
+.conference-venue {
+  padding-top: 140px;
+  padding-bottom: 340px;
+  .conference-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+  p {
+    margin-bottom: 20px;
+  }
+  .widget-centered {
+  padding: 30px 40px 30px 40px;
+  background-color: white;
+  }
+}
+
+/* Conference Footer */
+
+.conference-footer {
+  //background-color: $iceberg;
+  .conference-main-title {
+    font-size: 50px;
+  }
+  .pe-social .pe-bg {
+    background-color: $grey !important;
+    // color: $iceberg;
+  }
+  .pe-social {
+    margin: 30px 0px 0px 0px;
+  }
+  i.pe-7s-mail {
+    font-size: 40px;
+  }
+}
+
+
+
+
+
+
+
+
+
+#bg-test, #svg-test {
+  background-color: rgba(0,0,0,0.3);
+  position: relative;
+  transition: opacity .3s;
+  &.loading { 
+    opacity: .1;
+    pointer-events: none;
+  }
+}
+
+#parallax-opts {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: .3s;
+}
+
+input#radio-prlx:checked ~ #parallax-opts {
+  opacity: 1  ;
+  max-height: 500px;
+}
+
+input[name='bg-eff'] + label { cursor:pointer; }
+
+
+body.oh {
+  overflow: hidden;
+}
+
+
+
+.plugin-loader {
+  position: fixed;
+  z-index: 3000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($dark,.94);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s;
+
+  &.loading {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .loader {
+    width: 7vw;
+    padding: .3vw;
+    position: absolute;
+    left: 50%; top: 50%;
+    transform:translate(-50%,-50%);
+    transition: transform .3s;
+   
+  }
+  
+}
+
+
+.abs-center {
+  position: absolute;
+  margin: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
