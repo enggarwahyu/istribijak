@@ -1,4 +1,14 @@
 $( document ).ready(function() {
+  $('#confirm-delete').on('show.bs.modal', function(e) {
+      $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));       
+  });
+
+  //hanya bisa masukin angka
+  $('#inputinvestasi').keypress(function (data) {
+      if (data.which!=46 && data.which!=44 && data.which!=8 && data.which!=0 &&
+         (data.which<48 || data.which>57))
+        return false;
+  });
   //validasi simpan
 $("#btn").click(function(event){
     event.preventDefault();

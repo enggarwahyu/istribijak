@@ -8,13 +8,14 @@ class Logged extends MX_Controller {
 	{
 	  parent::__construct();
 	  $this->load->module('logged');
+      $this->title;
 	}
 
 	function index()
 	{
 		//mencegah akses ilegal url 
 		if ($this->session->userdata('logged_in') <> TRUE){
-			$this->load->view('errors/500');
+			$this->load->view('fail/500');
 		}else{
 			$this->logged_view();
 		}
@@ -26,56 +27,56 @@ class Logged extends MX_Controller {
 
 		switch ($_GET['menu']) {
 			case 'dashboard':
-				$title = 'DASHBOARD';
+				$this->title = 'DASHBOARD';
                 $this->load->module('logged_dashboard');
                 $this->logged_dashboard->index();
 				break;
             //--alokasi penghasilan
             case 'gaji':
-                $title = 'GAJI';
+                $this->title = 'GAJI';
                 $this->load->module('logged_gaji');
                 $this->logged_gaji->index();
                 break;
             case 'pensiunan':
-                $title = 'PENSIUNAN';
+                $this->title = 'PENSIUNAN';
                 $this->load->module('logged_pensiunan');
                 $this->logged_pensiunan->index();
                 break;
             case 'investasi':
-                $title = 'INVESTASI';
+                $this->title = 'INVESTASI';
                 $this->load->module('logged_investasi');
                 $this->logged_investasi->index();
                 break;
             case 'lainnya':
-                $title = 'LAINNYA';
+                $this->title = 'LAINNYA';
                 $this->load->module('logged_lainnya');
                 $this->logged_lainnya->index();
                 break;
             //end-alokasi penghasilan
             //--alokasi pengeluaran
             case 'belanja':
-                $title = 'GAJI';
+                $this->title = 'GAJI';
                 $this->load->module('logged_belanja');
                 $this->logged_belanja->index();
                 break;
             case 'tagihan':
-                $title = 'TAGIHAN';
+                $this->title = 'TAGIHAN';
                 $this->load->module('logged_tagihan');
                 $this->logged_tagihan->index();
                 break;
             //end-alokasi pengeluaran
 			case 'lap_keuangan':
-				$title = 'LAPORAN KEUANGAN';
+				$this->title = 'LAPORAN KEUANGAN';
                 $this->load->module('logged_laporankeu');
                 $this->logged_laporankeu->index();
 				break;
-			case 'pro_keuangan':
-				$title = 'PROYEKSI KEUANGAN';
-                $this->load->module('logged_pro_keuangan');
-                $this->logged_pro_pengeluaran->index();
-				break;
+			// case 'pro_keuangan':
+			// 	$this->title = 'PROYEKSI KEUANGAN';
+   //              $this->load->module('logged_pro_keuangan');
+   //              $this->logged_pro_pengeluaran->index();
+			// 	break;
 			case 'panduan':
-				$title = 'Panduan';
+				$this->title = 'Panduan';
                 $this->load->module('logged_panduan');
                 $this->logged_panduan->index();
 				break;
@@ -90,7 +91,7 @@ class Logged extends MX_Controller {
                 redirect(base_url().'login');                                                                 
                 break;					
 			default:
-				$title = 'DASHBOARD';
+				$this->title = 'DASHBOARD';
                 $this->load->module('logged_dashboard');
                 $this->logged_dashboard->index();
 				break;
@@ -99,7 +100,51 @@ class Logged extends MX_Controller {
 
     public function main($data,$view)
     {
-        $this->load->view('logged/top');
+        switch ($_GET['menu']) {
+            case 'dashboard':
+                $this->title = 'DASHBOARD';
+                break;
+            //--alokasi penghasilan
+            case 'gaji':
+                $this->title = 'GAJI';
+                break;
+            case 'pensiunan':
+                $this->title = 'PENSIUNAN';
+                break;
+            case 'investasi':
+                $this->title = 'INVESTASI';
+                break;
+            case 'lainnya':
+                $this->title = 'LAINNYA';
+                break;
+            //end-alokasi penghasilan
+            //--alokasi pengeluaran
+            case 'belanja':
+                $this->title = 'GAJI';
+                break;
+            case 'tagihan':
+                $this->title = 'TAGIHAN';
+                break;
+            //end-alokasi pengeluaran
+            case 'lap_keuangan':
+                $this->title = 'LAPORAN KEUANGAN';
+                break;
+            case 'pro_keuangan':
+                $this->title = 'PROYEKSI KEUANGAN';
+                break;
+            case 'panduan':
+                $this->title = 'Panduan';
+                break;                 
+            default:
+                $this->title = 'DASHBOARD';
+                break;
+        }
+
+        $title = array(
+            'title' => $this->title
+            );
+
+        $this->load->view('logged/top',$title);
         $this->load->view('logged/header');
         $this->load->view('logged/aside');
         $this->load->view($view,$data);

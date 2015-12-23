@@ -8,7 +8,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>Istri Bijak | Dashboard</title>
+    <title>Istri Bijak | <?php echo $title;?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url();?>assets/css/bootstrap.css" rel="stylesheet">
@@ -17,15 +17,14 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/lineicons/style.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>source/bootstrap/css/datepicker.css">
     <link rel="shortcut icon" href="images/ico.png">    
-    
+    <link href="<?php echo base_url();?>source/img/favicon/favicon.png" rel="shortcut icon" type="image/png"/>
+
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url();?>assets/css/style2.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/css/style-responsive.css" rel="stylesheet">
-
+  
     <script src="<?php echo base_url();?>assets/js/chart-master/Chart.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
     <script src="<?php echo base_url();?>assets/js/jquery-1.8.3.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>

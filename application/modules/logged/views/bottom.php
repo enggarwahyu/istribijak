@@ -5,19 +5,28 @@
     <script src="<?php echo base_url();?>assets/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="<?php echo base_url();?>assets/js/jquery.sparkline.js"></script>
+    <link href="<?php echo base_url();?>source/plugins/jQuery/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="<?php echo base_url();?>source/plugins/jQuery/jquery-ui.js"></script>
 
+      <!-- Javascript -->
+      <script>
+         $(function() {
+            $( "#datepicker" ).datepicker({
+                dateFormat : "yy-mm-dd",
+            });
+         });
+      </script>
 
     <!--common script for all pages-->
     <script src="<?php echo base_url();?>assets/js/common-scripts.js"></script>
     
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/gritter-conf.js"></script>
-    <script src="<?php echo base_url();?>source/bootstrap/js/datepicker.js"></script>
     <script src="<?php echo base_url();?>assets/js/morris-conf.js"></script>   
 
     <!--script for this page-->
     <script src="<?php echo base_url();?>assets/js/sparkline-chart.js"></script>    
-	<script src="<?php echo base_url();?>assets/js/zabuto_calendar.js"></script>	
+	<script src="<?php echo base_url();?>assets/js/zabuto_calendar.js"></script>
 	
 	<script type="text/javascript">
         $(document).ready(function () {
@@ -76,15 +85,13 @@
     </script>
 
     <script type="text/javascript">
-            // When the document is ready
-            $(document).ready(function () {
-                
-                $('#example1').datepicker({
-                    format: "dd/mm/yyyy"
-                });  
-            
+        $(function () {
+            $('.datetimepicker').datetimepicker({
+                format: 'YYYY/MM/DD HH:mm',
             });
+        });
     </script>
+
   </body>
 </html>
 <!--End : View Bottom-->

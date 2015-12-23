@@ -52,7 +52,7 @@
                   <li class="sub-menu"  >
                       <a href="chartjs.html" >
                           <i class="fa fa-book"></i>
-                          <span>Panduan</span>
+                          <span>Edukasi</span>
                       </a>
                   </li>                 
 
